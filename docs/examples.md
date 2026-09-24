@@ -110,7 +110,7 @@ python "$CR_SOURCE/vis/python/plot_cr_examples.py" streaming
 open streaming_comparison.png
 ```
 
-For \(\widetilde{\sigma}_{0,\rm st}=1\) and \(v_A=1\), the analytical front speed is \(v_{\rm st}=5/3\). The initial CR energy peak streams away from the central maximum, flattening the central gradient into a plateau that broadens with time while the outer fronts move outward. Accordingly, the flux is negative on the left, positive on the right, and small within the plateau. Because the two-moment method evolves the flux dynamically, the numerical solution shows a smooth central transition rather than the sharp zero-flux region of the idealized reference.
+For $`\widetilde{\sigma}_{0,\rm st}=1`$ and $`v_A=1`$, the analytical front speed is $`v_{\rm st}=5/3`$. The initial CR energy peak streams away from the central maximum, flattening the central gradient into a plateau that broadens with time while the outer fronts move outward. Accordingly, the flux is negative on the left, positive on the right, and small within the plateau. Because the two-moment method evolves the flux dynamically, the numerical solution shows a smooth central transition rather than the sharp zero-flux region of the idealized reference.
 
 Use CR energy as the quantitative check and flux as a qualitative sign-and-shape check.
 
@@ -120,7 +120,7 @@ Use CR energy as the quantitative check and flux as a qualitative sign-and-shape
 
 CR–gas coupling depends on both wave driving and wave damping, which together determine the saturated wave amplitude. In this model, the scattering coefficients represent those microscopic processes.
 
-`CR_streaming_nlldamp.cpp` initializes $\mathcal{E}_{\rm cr}(x,0)=1/(10+3|x|)$ and registers `MyCRScatteringCoefficient` as a user-defined nonlinear-Landau-damping closure. The callback evaluates the field-aligned CR-energy gradient and activates the forward- or backward-wave coefficient according to its sign, while setting the opposite branch, the Lorentz coefficient, and `deltaPcr` to zero. Active cells and the first ghost layer use centered gradients; the outer ghost layer copies the nearest computed coefficients to avoid out-of-bounds differencing.
+`CR_streaming_nlldamp.cpp` initializes $`\mathcal{E}_{\rm cr}(x,0)=1/(10+3|x|)`$ and registers `MyCRScatteringCoefficient` as a user-defined nonlinear-Landau-damping closure. The callback evaluates the field-aligned CR-energy gradient and activates the forward- or backward-wave coefficient according to its sign, while setting the opposite branch, the Lorentz coefficient, and `deltaPcr` to zero. Active cells and the first ghost layer use centered gradients; the outer ghost layer copies the nearest computed coefficients to avoid out-of-bounds differencing.
 
 ### 3.2 Build
 
@@ -197,7 +197,7 @@ The method paper discusses four wave branches in different regimes. The table li
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | CR-MHD acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $99.615$ | $0.1$ | $100.186$ | $-10.487$ | acoustic mode for the CR-MHD coupled fluid |
 | Damping CR-modified acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $1.198$ | $0.1$ | $9.596$ | $-2.718$ | CR-modified MHD acoustic mode |
-| Growing CR-modified acoustic | $10^{-3}$| $0.1$ | $0.01$  | $1000$ |$1.079 $| $0.1$|$ 0.322 $| $0.142$ | CR-modified MHD acoustic mode |
+| Growing CR-modified acoustic | $10^{-3}$| $0.1$ | $0.01$  | $1000$ |$1.079$| $0.1$|$0.322$| $0.142$ | CR-modified MHD acoustic mode |
 | Rapid damping | $10^{-8}$| $0.1$ |$ 0.01$ | $1000$ | $0.628$| $0.1$|$-1.007$ |$-99693.278$ | Strongly damped branch |
 
 Each row provides the case-specific parameters needed to initialize the corresponding wave. Use these values with the common numerical settings in `athinput.CRMHDwave`. In the input file, set `Vmax` to $V_m$, choose the domain length $x_{1,\max}-x_{1,\min}=L_{\rm box}$, and split the listed forward-wave scattering coefficient as `sigma_pL_1` $=$ `sigma_pR_1` $=$ $\sigma/2$, with `sigma_mL_1` $=$ `sigma_mR_1` $= 0$.
