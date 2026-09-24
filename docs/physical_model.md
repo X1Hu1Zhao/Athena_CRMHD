@@ -247,7 +247,7 @@ A two-moment method requires a closure for the CR pressure tensor. The isotropic
 
 In a magnetized plasma, charged-particle dynamics differ along and across the magnetic field, motivating a more general description with distinct parallel and perpendicular pressures. We characterize their difference by $`\Delta P_{\rm cr}\equiv P_{\rm cr,\parallel}-P_{\rm cr,\perp}`$. This anisotropy affects both the transport flux through $`\nabla\cdot\mathbf{P}_{\rm cr}`$ and the source terms through an additional channel of microphysical CR–gas coupling.
 
-The CR pressure-anisotropy instability (CRPAI) can be excited when $`\frac{|\Delta P_{\rm cr}|}{P_{\rm cr}}\gtrsim\frac{v_A}{c}$. The resulting waves scatter CRs and regulate their anisotropy. A representative steady-state estimate is $`\frac{\Delta P_{\rm cr}}{P_{\rm cr}}
+The CR pressure-anisotropy instability (CRPAI) can be excited when $`\frac{|\Delta P_{\rm cr}|}{P_{\rm cr}}\gtrsim\frac{v_A}{c}`$. The resulting waves scatter CRs and regulate their anisotropy. A representative steady-state estimate is $`\frac{\Delta P_{\rm cr}}{P_{\rm cr}}
 \sim \pm\frac{v_A}{c}
 \frac{\nu_{\rm damp}}{\Omega_{\rm cr}}
 \frac{\rho}{\rho_{\rm cr}}`$. For $`\Delta P_{\rm cr}<0`$, a branch selection motivated by quasi-linear theory (QLT) is $`\sigma_+^L=\sigma_-^R>0`$ and $`\sigma_+^R=\sigma_-^L=0`$; the active polarizations reverse for $`\Delta P_{\rm cr}>0`$.
