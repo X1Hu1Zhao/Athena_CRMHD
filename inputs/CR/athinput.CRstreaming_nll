@@ -1,0 +1,83 @@
+<comment>
+problem   = 2D single dust species streaming instability test
+reference = Streaming Instability Linear Test, Youdin & Johnsen 2007
+configure = --prob=streaming_eign --eos=isothermal --ndustfluids=1
+
+<job>
+problem_id  = CRStreaming_nll     # problem ID: basename of output filenames
+
+
+<output1>
+file_type      = hst            # History data dump
+dt             = 1e-3 # time increment between outputs
+
+
+
+<output2>
+file_type   = hdf5         # Binary data dump
+variable    = cr_1_energy_dens,cr_1_flux1,d  # built-in CR and gas variables
+dt          = 1e-2  # time increment between outputs
+ghost_zones = false
+
+
+
+
+<time>
+cfl_number     = 0.2         # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim           = -1          # cycle limit
+tlim           = 0.1        # time limit
+integrator     = vl2         # time integration algorithm
+xorder         = 2         # order of spatial reconstruction
+
+
+
+<mesh>
+nx1         = 256         # Number of zones in X1-direction
+x1min       = -2.0           # minimum value of X1
+x1max       = 2.0            # maximum value of X1
+ix1_bc      = user  # Inner-X1 boundary condition flag
+ox1_bc      = user  # Outer-X1 boundary condition flag
+
+nx2         = 1            # Number of zones in X2-direction
+x2min       = -1.0           # minimum value of X2
+x2max       = 1.0            # maximum value of X2
+ix2_bc      = periodic      # Inner-X2 boundary condition flag
+ox2_bc      = periodic       # Outer-X2 boundary condition flag
+
+nx3         = 1              # Number of zones in X3-direction
+x3min       = -1.0           # minimum value of X3
+x3max       = 1.0            # maximum value of X3
+ix3_bc      = periodic      # Inner-X3 boundary condition flag
+ox3_bc      = periodic       # Outer-X3 boundary condition flag
+
+
+
+<hydro>
+gamma           = 1.6666666666666667 # gamma = C_p/C_v
+
+
+
+
+#<meshblock>
+#nx1 = 32
+#nx2 = 128
+#nx3 = 4
+
+
+
+
+<problem>
+
+
+<cosmic_ray>
+scattering_integrator = 2nd-implicit
+solver_id = 2
+Vmax = 100.0
+CR_EnergyFeedback_Flag = false
+CRFeedback_Flag = false
+
+sigma_pL_1 = 0.0
+sigma_pR_1 = 0.0
+sigma_mL_1 = 0.0
+sigma_mR_1 = 0.0
+sigma_Lorentz_1 = 0.0

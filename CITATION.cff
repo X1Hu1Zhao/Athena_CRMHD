@@ -1,0 +1,66 @@
+# YAML 1.2
+# Citation metadata for the Athena++ CRMHD module.
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite the CRMHD method paper and the
+  original Athena++ framework paper.
+title: Athena++ Cosmic-Ray Magnetohydrodynamics Module
+type: software
+authors:
+  - given-names: Xihui
+    family-names: Zhao
+    orcid: https://orcid.org/0009-0003-1259-319X
+version: 0.1.0
+date-released: 2026-09-24
+repository-code: https://github.com/X1Hu1Zhao/Athena_CRMHD
+license: BSD-3-Clause
+
+preferred-citation:
+  type: article
+  title: >-
+    Cosmic Ray Magnetohydrodynamics: A New Two-Moment Framework with
+    Numerical Implementation
+  journal: The Astrophysical Journal Supplement Series
+  year: 2026
+  volume: 283
+  issue: 1
+  doi: 10.3847/1538-4365/ae3e7f
+  authors:
+    - given-names: Xihui
+      family-names: Zhao
+      orcid: https://orcid.org/0009-0003-1259-319X
+    - given-names: Xue-Ning
+      family-names: Bai
+      orcid: https://orcid.org/0000-0001-6906-9549
+    - given-names: Eve C.
+      family-names: Ostriker
+      orcid: https://orcid.org/0000-0002-0509-9113
+
+references:
+  - type: article
+    title: >-
+      Athena++ Adaptive Mesh Refinement Framework: Design and
+      Magnetohydrodynamic Solvers
+    journal: The Astrophysical Journal Supplement Series
+    year: 2020
+    volume: 249
+    issue: 1
+    doi: 10.3847/1538-4365/ab929b
+    authors:
+      - given-names: James M.
+        family-names: Stone
+        orcid: https://orcid.org/0000-0001-5603-1832
+      - given-names: Kengo
+        family-names: Tomida
+        orcid: https://orcid.org/0000-0001-8105-8113
+      - given-names: Chris J.
+        family-names: White
+      - given-names: Kyle G.
+        family-names: Felker
+        orcid: https://orcid.org/0000-0002-3501-482X
+  - type: software
+    title: Athena++
+    version: "21.0"
+    doi: 10.5281/zenodo.4455880
+    repository-code: https://github.com/PrincetonUniversity/athena
+    license: BSD-3-Clause

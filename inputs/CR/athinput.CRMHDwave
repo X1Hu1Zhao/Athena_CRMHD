@@ -1,0 +1,92 @@
+<comment>
+problem   = one-dimensional growing CR-modified acoustic mode
+reference = CR-MHD wave example
+configure = --prob=CRMHD_wave -b -hdf5 --ncrs=1
+
+<job>
+problem_id  = growing       # problem ID: basename of output filenames
+
+<output1>
+file_type      = hst            # History data dump
+dt             = 1e-2 # time increment between outputs
+
+
+
+<output2>
+file_type   = hdf5         # Binary data dump
+variable    = cr_1_energy_dens,cr_1_flux1,d  # built-in CR and gas variables
+dt          = 1e-2 # time increment between outputs
+
+
+
+
+
+<time>
+cfl_number     = 0.3         # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim           = -1          # cycle limit
+tlim           = 10.0        # time limit
+integrator     = vl2         # time integration algorithm
+xorder         = 2          # order of spatial reconstruction
+
+
+
+<mesh>
+nx1         = 256           # Number of zones in X1-direction
+x1min       = 0.0           # minimum value of X1
+x1max       = 1.080  # maximum value of X1
+ix1_bc      = periodic # Inner-X1 boundary condition flag
+ox1_bc      = periodic # Outer-X1 boundary condition flag
+
+nx2         = 1            # Number of zones in X2-direction
+x2min       = 0.0           # minimum value of X2
+x2max       = 0.010838182529267134            # maximum value of X2
+ix2_bc      = periodic      # Inner-X2 boundary condition flag
+ox2_bc      = periodic       # Outer-X2 boundary condition flag
+
+nx3         = 1              # Number of zones in X3-direction
+x3min       = 0.0           # minimum value of X3
+x3max       = 0.010838182529267134            # maximum value of X3
+ix3_bc      = periodic      # Inner-X3 boundary condition flag
+ox3_bc      = periodic       # Outer-X3 boundary condition flag
+
+
+
+<hydro>
+gamma           = 1.6666666666666667 # gamma = C_p/C_v
+
+
+
+
+#<meshblock>
+#nx1 = 32
+#nx2 = 128
+#nx3 = 4
+
+
+
+
+<problem>
+vA  = 0.1
+Cs  = 0.01
+Ccr = 1.0
+u0  = 0.0
+Rew = 0.32
+Imw = 0.14
+delta_rho_over_rho = 1e-3
+
+
+<cosmic_ray>
+scattering_integrator = 2nd-implicit
+Scattering_Flag = true
+scattering_model = constant
+solver_id = 2
+sigma_pL_1 = 0.058
+sigma_pR_1 = 0.058
+sigma_mL_1 = 0.0
+sigma_mR_1 = 0.0
+sigma_Lorentz_1 = 0.0
+
+CRFeedback_Flag = true
+CR_EnergyFeedback_Flag = false
+
+Vmax = 1000.0

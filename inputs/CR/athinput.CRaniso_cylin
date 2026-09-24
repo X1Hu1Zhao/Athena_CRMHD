@@ -1,0 +1,89 @@
+<comment>
+problem   = Cylindrical CR pressure-anisotropy test
+configure = python configure.py --prob=CRaniso_cylin --coord=cylindrical -b -hdf5 --ncrs=1
+
+<job>
+problem_id  = test1       # problem ID: basename of output filenames
+
+<output1>
+file_type      = hst            # History data dump
+dt             = 0.01 # time increment between outputs
+
+
+
+<output2>
+file_type   = hdf5         # Binary data dump
+variable    = uov         # variables to be output
+dt          = 1e-2  # time increment between outputs
+ghost_zones = false
+
+
+
+
+
+<time>
+cfl_number     = 0.3         # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim           = -1          # cycle limit
+tlim           = 5.0        # time limit
+integrator     = vl2         # time integration algorithm
+xorder         = 2           # order of spatial reconstruction
+
+
+
+<mesh>
+nx1         = 256           # Number of zones in X1-direction
+x1min       = 0.5           # minimum value of X1
+x1max       = 1.8            # maximum value of X1
+ix1_bc      = user # Inner-X1 boundary condition flag
+ox1_bc      = user # Outer-X1 boundary condition flag
+
+
+
+nx2         = 32            # Number of zones in X2-direction
+x2min       = 0           # minimum value of X2
+x2max       = 6.28318530718            # maximum value of X2
+ix2_bc      = periodic      # Inner-X2 boundary condition flag
+ox2_bc      = periodic       # Outer-X2 boundary condition flag
+
+nx3         = 1              # Number of zones in X3-direction
+x3min       = 0.0           # minimum value of X3
+x3max       = 1.0            # maximum value of X3
+ix3_bc      = periodic      # Inner-X3 boundary condition flag
+ox3_bc      = periodic       # Outer-X3 boundary condition flag
+
+
+
+<hydro>
+gamma           = 1.6666666666666667 # gamma = C_p/C_v
+
+
+
+
+#<meshblock>
+#nx1 = 32
+#nx2 = 128
+#nx3 = 4
+
+
+
+
+<problem>
+lambda = 1.0
+vA0 = 1.0
+
+
+<cosmic_ray>
+scattering_integrator = 2nd-implicit
+scattering_model = constant
+solver_id = 2
+CRFeedback_Flag = true
+CR_EnergyFeedback_Flag = true
+
+sigma_pL_1 = 0.0
+sigma_pR_1 = 0.0
+sigma_mL_1 = 0.0
+sigma_mR_1 = 0.0
+sigma_Lorentz_1 = 0.0
+
+
+pressure_anisotropy_flag = True

@@ -1,0 +1,87 @@
+<comment>
+problem   = Spherical-polar CR streaming test
+configure = python configure.py --prob=CR_streaming_sph --coord=spherical_polar -b -hdf5 --ncrs=1
+
+<job>
+problem_id  = test1       # problem ID: basename of output filenames
+
+<output1>
+file_type      = hst            # History data dump
+dt             = 1e-5 # time increment between outputs
+
+
+
+<output2>
+file_type   = hdf5         # Binary data dump
+variable    = uov         # variables to be output
+dt          = 1e-5  # time increment between outputs
+ghost_zones = false
+
+
+
+
+<time>
+cfl_number     = 0.3         # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim           = 2          # cycle limit
+tlim           = 0.3        # time limit
+integrator     = vl2         # time integration algorithm
+xorder         = 2           # order of spatial reconstruction
+
+
+
+<mesh>
+nx1         = 512          # Number of zones in X1-direction
+x1min       = 0.1           # minimum value of X1
+x1max       = 2.0            # maximum value of X1
+ix1_bc      = outflow # Inner-X1 boundary condition flag
+ox1_bc      = outflow # Outer-X1 boundary condition flag
+
+
+
+
+nx2         = 32            # Number of zones in X2-direction
+x2min       = 0           # minimum value of X2
+x2max       = 3.141592653589793            # maximum value of X2
+ix2_bc      = polar      # Inner-X2 boundary condition flag
+ox2_bc      = polar       # Outer-X2 boundary condition flag
+
+nx3         = 8              # Number of zones in X3-direction
+x3min       = 0           # minimum value of X3
+x3max       = 6.2831853071795862            # maximum value of X3
+ix3_bc      = periodic      # Inner-X3 boundary condition flag
+ox3_bc      = periodic       # Outer-X3 boundary condition flag
+
+
+
+<hydro>
+gamma           = 1.6666666666666667 # gamma = C_p/C_v
+iso_sound_speed = 1.0
+
+
+
+
+#<meshblock>
+#nx1 = 32
+#nx2 = 128
+#nx3 = 4
+
+
+
+
+<problem>
+
+
+<cosmic_ray>
+scattering_integrator = 2nd-implicit
+scattering_model = constant
+solver_id = 2
+CRFeedback_Flag = true
+CR_EnergyFeedback_Flag = true
+
+sigma_pL_1 = 0.0
+sigma_pR_1 = 0.0
+sigma_mL_1 = 0.0
+sigma_mR_1 = 0.0
+sigma_Lorentz_1 = 0.0
+
+pressure_anisotropy_flag = False

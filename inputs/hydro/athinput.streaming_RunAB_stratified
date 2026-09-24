@@ -1,0 +1,102 @@
+<comment>
+problem   = 2D single dust species streaming instability test
+reference = Streaming Instability NonLinear Test, Johnsen & Youdin 2007
+configure = --prob=streaming_eign --eos=isothermal --ncrs=1
+
+<job>
+problem_id  = streaming_nonlinear       # problem ID: basename of output filenames
+
+<output1>
+file_type      = hst            # History data dump
+dt             = 0.01           # time increment between outputs
+data_format    = %24.16e        # Optional data format string
+orbital_system = 0              # read orbital system output
+
+<output2>
+file_type   = hdf5         # Binary data dump
+variable    = prim         # variables to be output
+dt          = 0.1  # time increment between outputs
+ghost_zones = 0
+
+<output3>
+file_type   = rst          # Restart dump
+dt          = 2  # time increment between outputs
+
+<time>
+cfl_number     = 0.3         # The Courant, Friedrichs, & Lewy (CFL) Number
+nlim           = -1          # cycle limit
+tlim           = 40        # time limit
+integrator     = vl2         # time integration algorithm
+xorder         = 3           # order of spatial reconstruction
+ncycle_out     = 100          # interval for stdout summary info
+dt_diagnostics = 0           # interval (in STS stages) for stdout extra dt info
+#user_dt        = 2e-3       # user defined time step
+
+
+<mesh>
+nx1         = 128            # Number of zones in X1-direction
+x1min       = -0.05          # minimum value of X1
+x1max       = 0.05           # maximum value of X1
+ix1_bc      = shear_periodic # Inner-X1 boundary condition flag
+ox1_bc      = shear_periodic # Outer-X1 boundary condition flag
+
+nx2         = 128            # Number of zones in X2-direction
+x2min       = -0.05          # minimum value of X2
+x2max       = 0.05           # maximum value of X2
+ix2_bc      = reflecting       # Inner-X2 boundary condition flag
+ox2_bc      = reflecting       # Outer-X2 boundary condition flag
+
+nx3         = 1              # Number of zones in X3-direction
+x3min       = -0.05          # minimum value of X3
+x3max       = 0.05           # maximum value of X3
+ix3_bc      = periodic       # Inner-X3 boundary condition flag
+ox3_bc      = periodic       # Outer-X3 boundary condition flag
+
+refinement = static
+
+<meshblock>
+nx1         = 64
+nx2         = 64
+nx3         = 1
+
+<refinement1>
+x1min = -0.05
+x1max = 0.05
+x2min = -0.01
+x2max = 0.01
+level = 3
+
+<hydro>
+gamma           = 1.6666666666666667 # gamma = C_p/C_v
+iso_sound_speed = 1.        # isothermal sound speed, Lin A
+
+<problem>
+ipert           = 1    # 1 for random d,P, 2 for uniform Vx
+nwx             = 1    # wavenumber in x1
+nwy             = 1    # wavenumber in x2
+nwz             = 1    # wavenumber in x3
+rhog0           = 1.0
+
+amp             = 0.05
+etaVk           = 0.05
+
+
+<orbital_advection>
+Omega0     = 1.0  # orbital freq
+qshear     = 1.5  # shear rate
+shboxcoord = 2    # 1=xy; 2=xz
+OAorder    = 0
+
+
+<cosmic_ray>
+UserDefined_StoppingTime_Flag = 1             # Use a constant CR scattering time
+Diffusion_Flag                = 0             # Enable CR diffusion
+Momentum_Diffusion_Flag       = 0             # The flag of momentum diffusion
+CRFeedback_Flag               = 1             # Enable CR feedback
+Cr_SoundSpeed_Flag            = 0
+cr_xorder                     = 2
+drag_method                   = 2nd-implicit      # The drag integratos, "explicit", "semi-implicit", "1st-implicit" or "2nd-implicit"
+
+internal_density_1            = 0.1
+initial_D2G_1                 = 1.0
+Hratio_1                      = 0.1

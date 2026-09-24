@@ -1,0 +1,74 @@
+# Configured outputs
+Makefile
+src/defs.hpp
+
+# Object and binary directories
+obj/
+bin/
+
+# Compiled object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+athena
+
+# Athena output files
+*.tab
+*.vtk
+*.athdf*
+*.hst
+*.rst
+meshtest.dat
+
+# Visualization package files
+.smhist
+
+# Mac OS metadata
+.DS_Store
+
+# editor temp files
+*~
+*.swp
+
+# Gcov: GCC coverage testing tool- data files
+*.gcno
+*.gcda
+
+# Gcov log files
+*.gcov
+
+# Lcov: graphical frontend for Gcov- tracefiles
+*.info
+
+# genhtml test case description format produced by gendesc
+*.desc
+# Local development metadata
+.Rhistory
+.claude/
+.vscode/
+
+# Generated editor and Python indexes
+tags
+__pycache__/
+*.py[cod]
+
+# Locally compiled visualization helpers
+/vis/vtk/join_vtk
+/vis/vtk/join_vtk++
