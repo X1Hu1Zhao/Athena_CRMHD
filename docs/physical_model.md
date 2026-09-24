@@ -184,7 +184,7 @@ Separating these branches is necessary when pressure anisotropy selects differen
 The wave contributions to $`\boldsymbol{S}_{F}`$ represent the force exerted on the CR fluid. Let $`\boldsymbol{S}_{F,+}`$ and $`\boldsymbol{S}_{F,-}`$ denote the contributions containing the forward- and backward-wave coefficients, respectively. The work associated with these wave forces can be written as
 
 ```math
-(\vec{u}+\vec{v}_A)\cdot\boldsymbol{S}_{F,+} + (\vec{u}-\vec{v}_A)\cdot\boldsymbol{S}_{F,-}
+(\boldsymbol{u}+\boldsymbol{v}_A)\cdot\boldsymbol{S}_{F,+} + (\boldsymbol{u}-\boldsymbol{v}_A)\cdot\boldsymbol{S}_{F,-}
 ```
 Each term is the force density dotted with the velocity of the corresponding scatterers. Their sum exactly matches the wave contribution in the $\mathcal{E}_{\rm cr}$ source term $S_E$, as expected.
 
@@ -225,7 +225,7 @@ The built-in streaming model selects the active wave direction from the sign of 
 \frac{|\boldsymbol{b}\cdot\boldsymbol{\nabla}{P}_{\rm cr}|}
 {{P}_{\rm cr}v_A}\Theta(\mp\boldsymbol{b}\cdot\nabla P_{\rm cr})
 ```
-In input files, $\widetilde{\sigma}_{0,\rm st}$ is `sigma0_streaming_N` for the $N$-th CR species.
+In input files, $`\widetilde{\sigma}_{0,\rm st}`$ is `sigma0_streaming_N` for the $`N`$-th CR species.
 
 This closure captures the gradient dependence expected when CR streaming-instability growth is locally balanced by linear damping. It is a steady-state subgrid prescription; the Alfvén-wave dynamics is not evolved.
 
@@ -254,7 +254,7 @@ The CR pressure-anisotropy instability (CRPAI) can be excited when $`\frac{|\Del
 
 We consider a regime in which this regulation reaches a locally saturated state on timescales shorter than those resolved by the simulation. Accordingly, $`\Delta P_{\rm cr}`$ (kept on the level of $`v_A P_{\rm cr}/c`$) is prescribed through a local subgrid closure rather than evolved as an independent fluid variable. 
 
-Since both $`\Delta P_{\rm cr}$ and $\sigma_{\pm}^{L,R}`$ represent unresolved microphysics and depend on prescriptions, the code assigns them together when setting the scattering properties. This treatment is consistent with our aim of incorporating CRPAI as an additional coupling mechanism at the fluid scale.
+Since both $`\Delta P_{\rm cr}`$ and $`\sigma_{\pm}^{L,R}`$ represent unresolved microphysics and depend on prescriptions, the code assigns them together when setting the scattering properties. This treatment is consistent with our aim of incorporating CRPAI as an additional coupling mechanism at the fluid scale.
 
 
 
