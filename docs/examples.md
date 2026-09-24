@@ -195,12 +195,12 @@ The method paper discusses four wave branches in different regimes. The table li
 
 | Case | $\delta \rho/\rho_0$|$v_A$ | $C_s$ | $V_m$ |$L_{\rm box}$| $\sigma$|`Rew` | `Imw` | Interpretation |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| CR-MHD acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $99.615$ | $0.1$ | $100.186$ | $-10.487$ | acoustic mode for the CR-MHD coupled fluid |
-| Damping CR-modified acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $1.198$ | $0.1$ | $9.596$ | $-2.718$ | CR-modified MHD acoustic mode |
+| CR-MHD acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $99.615$ | $0.1$ | $100.186$ | $`-10.487`$ | acoustic mode for the CR-MHD coupled fluid |
+| Damping CR-modified acoustic | $10^{-3}$| $0.01$ | $0.1$ | $100$ | $1.198$ | $0.1$ | $9.596$ | $`-2.718`$ | CR-modified MHD acoustic mode |
 | Growing CR-modified acoustic | $10^{-3}$| $0.1$ | $0.01$  | $1000$ |$1.079$| $0.1$ | $0.322$ | $0.142$ | CR-modified MHD acoustic mode |
-| Rapid damping | $10^{-8}$ | $0.1$ |$0.01$ | $1000$ | $0.628$ | $0.1$ | $-1.007$ | $-99693.278$ | Strongly damped branch |
+| Rapid damping | $10^{-8}$ | $0.1$ |$0.01$ | $1000$ | $0.628$ | $0.1$ | $-1.007$ | $`-99693.278`$ | Strongly damped branch |
 
-Each row provides the case-specific parameters needed to initialize the corresponding wave. Use these values with the common numerical settings in `athinput.CRMHDwave`. In the input file, set `Vmax` to $`V_m`$, choose the domain length $x_{1,\max}-x_{1,\min}=L_{\rm box}$, and split the listed forward-wave scattering coefficient as `sigma_pL_1` $=$ `sigma_pR_1` $=$ $\sigma/2$, with `sigma_mL_1` $=$ `sigma_mR_1` $= 0$.
+Each row provides the case-specific parameters needed to initialize the corresponding wave. Use these values with the common numerical settings in `athinput.CRMHDwave`. In the input file, set `Vmax` to $`V_m`$, choose the domain length $`x_{1,\max}-x_{1,\min}=L_{\rm box}`$, and split the listed forward-wave scattering coefficient as `sigma_pL_1` $=$ `sigma_pR_1` $=$ $\sigma/2$, with `sigma_mL_1` $=$ `sigma_mR_1` $= 0$.
 
 ### 4.3 Run
 
@@ -227,14 +227,14 @@ Check that the log ends at $t=2$ and that three `CRMHD_growing.out2.*.athdf` sna
 
 ### 4.4 Plot
 
-Plot $\mathcal{E}_{\rm cr}-\langle\mathcal{E}_{\rm cr}\rangle$ against the growing eigenmode:
+Plot $`\mathcal{E}_{\rm cr}-\langle\mathcal{E}_{\rm cr}\rangle`$ against the growing eigenmode:
 
 ```bash
 python "$CR_SOURCE/vis/python/plot_cr_examples.py" growing
 open growing_comparison.png
 ```
 
-The black dashed curves show the linear eigenmode prediction $\mathrm{Re}[{\delta\mathcal{E}}_{\rm cr}e^{i(kx-\omega t)}]$, with $k=2\pi/L_{\rm box}$ and $\omega=kv_A$(`Rew`+$i$`Imw`). The real part of $\omega$ determines the phase propagation, while a positive imaginary part produces exponential growth. At each output time, the plotter subtracts the numerical spatial mean $\langle\mathcal{E}_{\rm cr}\rangle$, isolating the wave perturbation from the uniform background shift. Agreement in phase and amplitude therefore tests both the eigenmode initialization and its subsequent evolution in the coupled CR–MHD system.
+The black dashed curves show the linear eigenmode prediction $`\mathrm{Re}[{\delta\mathcal{E}}_{\rm cr}e^{i(kx-\omega t)}]`$, with $`k=2\pi/L_{\rm box}`$ and $`\omega=kv_A`$(`Rew`+$`i`$`Imw`). The real part of $\omega$ determines the phase propagation, while a positive imaginary part produces exponential growth. At each output time, the plotter subtracts the numerical spatial mean $\langle\mathcal{E}_{\rm cr}\rangle$, isolating the wave perturbation from the uniform background shift. Agreement in phase and amplitude therefore tests both the eigenmode initialization and its subsequent evolution in the coupled CR–MHD system.
 
 ## 5. Problem Generators from the Method Paper
 
