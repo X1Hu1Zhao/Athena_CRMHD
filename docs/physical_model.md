@@ -9,7 +9,7 @@ This page describes the model's physical scope, equations, and closure assumptio
 
 ## 1. Scope
 
-This module describes CRs as one or more fluid species coupled to an MHD gas. It evolves two fluid moments of the CR distribution: the energy density $\mathcal{E}_{\rm cr}$ and energy flux $\boldsymbol{F}_{\rm cr}$. The central modeling task is to represent microscopic CR transport and CR–gas coupling at the fluid scale. We consider gyroresonant scattering by Alfvén waves propagating parallel or antiparallel to the magnetic field. Four effective scattering coefficients, $\sigma_{+}^L,\ \sigma_{+}^R,\ \sigma_{-}^L$, and $\sigma_{-}^R$, distinguish the waves' propagation directions and circular polarizations.
+This module describes CRs as one or more fluid species coupled to an MHD gas. It evolves two fluid moments of the CR distribution: the energy density $`\mathcal{E}_{\rm cr}`$ and energy flux $`\boldsymbol{F}_{\rm cr}`$. The central modeling task is to represent microscopic CR transport and CR–gas coupling at the fluid scale. We consider gyroresonant scattering by Alfvén waves propagating parallel or antiparallel to the magnetic field. Four effective scattering coefficients, $`\sigma_{+}^L,\ \sigma_{+}^R,\ \sigma_{-}^L$, and $\sigma_{-}^R`$, distinguish the waves' propagation directions and circular polarizations.
 
 The model is intended for macroscopic simulations in which kinetic-scale wave growth and damping reach local equilibrium on the simulation timescale. A local subgrid closure represents the unresolved saturated wave state.
 
@@ -26,7 +26,7 @@ u_{\parallel}=\boldsymbol{u}\cdot\boldsymbol{b},
 \boldsymbol{u}_{\parallel}=u_{\parallel}\boldsymbol{b},
 ```
 
-Here $\boldsymbol{b}=\boldsymbol{B}/|\boldsymbol{B}|$ is the magnetic-field unit vector. In Athena++ magnetic units, the Alfvén velocity is $\boldsymbol{v}_A=\boldsymbol{B}/\sqrt{\rho}$. The two-moment formulation is
+Here $`\boldsymbol{b}=\boldsymbol{B}/|\boldsymbol{B}|`$ is the magnetic-field unit vector. In Athena++ magnetic units, the Alfvén velocity is $`\boldsymbol{v}_A=\boldsymbol{B}/\sqrt{\rho}`$. The two-moment formulation is
 
 ```math
 \frac{\partial \mathcal{E}_{\rm cr}}{\partial t}
@@ -78,7 +78,7 @@ The CR flux source is
 \end{aligned}
 ```
 
-$\sigma_+$ and $\sigma_-$ denote the total scattering coefficients for forward- and backward-propagating waves:
+$`\sigma_+`$ and $`\sigma_-`$ denote the total scattering coefficients for forward- and backward-propagating waves:
 
 ```math
 \sigma_+=\sigma_+^L+\sigma_+^R,
@@ -86,7 +86,7 @@ $\sigma_+$ and $\sigma_-$ denote the total scattering coefficients for forward- 
 \sigma_-=\sigma_-^L+\sigma_-^R.
 ```
 
-We consider pressure anisotropy of order $|\Delta P_{\rm cr}|\sim (v_A/c)P_{\rm cr}$. At this level, anisotropy-driven self-confinement and energy exchange with the MHD gas can regulate the anisotropy. Although the source terms contain the large physical light speed $c$, it multiplies the small anisotropy, giving $|c\Delta P_{\rm cr}|\sim v_A P_{\rm cr}$.
+We consider pressure anisotropy of order $`|\Delta P_{\rm cr}|\sim (v_A/c)P_{\rm cr}`$. At this level, anisotropy-driven self-confinement and energy exchange with the MHD gas can regulate the anisotropy. Although the source terms contain the large physical light speed $`c`$, it multiplies the small anisotropy, giving $`|c\Delta P_{\rm cr}|\sim v_A P_{\rm cr}`$.
 
 
 
@@ -110,7 +110,7 @@ In a coordinate frame with $\hat{x}\parallel \boldsymbol{b}$, the CR pressure te
 ```math
 \mathbf{P}_{\rm cr}=\begin{pmatrix}P_{\rm cr,\parallel} & 0 & 0\\ 0 & P_{\rm cr,\perp} & 0\\ 0 & 0 & P_{\rm cr,\perp} \end{pmatrix}
 ```
-where $P_{\rm cr,\parallel}$ and $P_{\rm cr,\perp}$ are the pressures parallel and perpendicular to the magnetic field.
+where $`P_{\rm cr,\parallel}`$ and $`P_{\rm cr,\perp}`$ are the pressures parallel and perpendicular to the magnetic field.
 
 The CR pressure anisotropy is their difference:
 ```math
@@ -131,7 +131,7 @@ with
 P_{\rm cr, \parallel}+2P_{\perp}={\mathcal{E}_{\rm cr}}.
 ```
 
-Setting $\Delta P_{\rm cr}=0$ recovers the isotropic closure $\mathbf{P}_{\rm cr}=\mathcal{E}_{\rm cr}\mathbf{I}/3$. The current recommended `solver_id = 2` transport path uses the isotropic $\mathcal{E}_{\rm cr}/3$ interface pressure in its numerical flux. The HLLE solver includes the reconstructed pressure-anisotropy contribution in the CR pressure tensor. By default, however, $\Delta P_{\rm cr}$ is set to zero. Users should enable it only when they have a physically justified prescription; see [Pressure Anisotropy](physical_model.md#7-pressure-anisotropy) for details.
+Setting $`\Delta P_{\rm cr}=0`$ recovers the isotropic closure $`\mathbf{P}_{\rm cr}=\mathcal{E}_{\rm cr}\mathbf{I}/3`$. The current recommended `solver_id = 2` transport path uses the isotropic $`\mathcal{E}_{\rm cr}/3`$ interface pressure in its numerical flux. The HLLE solver includes the reconstructed pressure-anisotropy contribution in the CR pressure tensor. By default, however, $`\Delta P_{\rm cr}`$ is set to zero. Users should enable it only when they have a physically justified prescription; see [Pressure Anisotropy](physical_model.md#7-pressure-anisotropy) for details.
 
 
 
@@ -164,7 +164,7 @@ Forward and backward waves can coexist. Each wave population tends to isotropize
 \rightarrow
 (\mathcal{E}_{\rm cr}+P_{\rm cr})(\boldsymbol{u}\pm\boldsymbol{v}_A).
 ```
-The corresponding flux-relaxation term on the right-hand side vanishes when $\boldsymbol{F}_{\rm cr}=(\mathcal{E}_{\rm cr}+P_{\rm cr})(\boldsymbol{u}\pm\boldsymbol{v}_A)$.
+The corresponding flux-relaxation term on the right-hand side vanishes when $`\boldsymbol{F}_{\rm cr}=(\mathcal{E}_{\rm cr}+P_{\rm cr})(\boldsymbol{u}\pm\boldsymbol{v}_A)`$.
 
 A perpendicular CR flux contributes to a macroscopic current and hence to the Lorentz term. The large CR gyrofrequency rapidly constrains transport relative to the magnetic field, consistent with charged particles being tied to field lines when their gyroradii are small.
 
@@ -181,7 +181,7 @@ Separating these branches is necessary when pressure anisotropy selects differen
 
 
 
-The wave contributions to $\boldsymbol{S}_{F}$ represent the force exerted on the CR fluid. Let $\boldsymbol{S}_{F,+}$ and $\boldsymbol{S}_{F,-}$ denote the contributions containing the forward- and backward-wave coefficients, respectively. The work associated with these wave forces can be written as
+The wave contributions to $`\boldsymbol{S}_{F}`$ represent the force exerted on the CR fluid. Let $`\boldsymbol{S}_{F,+}`$ and $`\boldsymbol{S}_{F,-}`$ denote the contributions containing the forward- and backward-wave coefficients, respectively. The work associated with these wave forces can be written as
 
 ```math
 (\vec{u}+\vec{v}_A)\cdot\boldsymbol{S}_{F,+} + (\vec{u}-\vec{v}_A)\cdot\boldsymbol{S}_{F,-}
@@ -243,9 +243,9 @@ over the requested cell range. This interface can accommodate user-defined scatt
 
 ## 7. Pressure Anisotropy
 
-A two-moment method requires a closure for the CR pressure tensor. The isotropic closure sets $\mathbf{P}_{\rm cr}=\mathcal{E}_{\rm cr}\mathbf{I}/3$.
+A two-moment method requires a closure for the CR pressure tensor. The isotropic closure sets $`\mathbf{P}_{\rm cr}=\mathcal{E}_{\rm cr}\mathbf{I}/3`$.
 
-In a magnetized plasma, charged-particle dynamics differ along and across the magnetic field, motivating a more general description with distinct parallel and perpendicular pressures. We characterize their difference by $\Delta P_{\rm cr}\equiv P_{\rm cr,\parallel}-P_{\rm cr,\perp}$. This anisotropy affects both the transport flux through $\nabla\cdot\mathbf{P}_{\rm cr}$ and the source terms through an additional channel of microphysical CR–gas coupling.
+In a magnetized plasma, charged-particle dynamics differ along and across the magnetic field, motivating a more general description with distinct parallel and perpendicular pressures. We characterize their difference by $`\Delta P_{\rm cr}\equiv P_{\rm cr,\parallel}-P_{\rm cr,\perp}`$. This anisotropy affects both the transport flux through $`\nabla\cdot\mathbf{P}_{\rm cr}`$ and the source terms through an additional channel of microphysical CR–gas coupling.
 
 The CR pressure-anisotropy instability (CRPAI) can be excited when
 \[
