@@ -247,16 +247,10 @@ A two-moment method requires a closure for the CR pressure tensor. The isotropic
 
 In a magnetized plasma, charged-particle dynamics differ along and across the magnetic field, motivating a more general description with distinct parallel and perpendicular pressures. We characterize their difference by $`\Delta P_{\rm cr}\equiv P_{\rm cr,\parallel}-P_{\rm cr,\perp}`$. This anisotropy affects both the transport flux through $`\nabla\cdot\mathbf{P}_{\rm cr}`$ and the source terms through an additional channel of microphysical CR–gas coupling.
 
-The CR pressure-anisotropy instability (CRPAI) can be excited when
-\[
-\frac{|\Delta P_{\rm cr}|}{P_{\rm cr}}\gtrsim\frac{v_A}{c}.
-\]The resulting waves scatter CRs and regulate their anisotropy. A representative steady-state estimate is
-\[
-\frac{\Delta P_{\rm cr}}{P_{\rm cr}}
+The CR pressure-anisotropy instability (CRPAI) can be excited when $`\frac{|\Delta P_{\rm cr}|}{P_{\rm cr}}\gtrsim\frac{v_A}{c}$. The resulting waves scatter CRs and regulate their anisotropy. A representative steady-state estimate is $`\frac{\Delta P_{\rm cr}}{P_{\rm cr}}
 \sim \pm\frac{v_A}{c}
 \frac{\nu_{\rm damp}}{\Omega_{\rm cr}}
-\frac{\rho}{\rho_{\rm cr}}.
-\]For $`\Delta P_{\rm cr}<0`$, a branch selection motivated by quasi-linear theory (QLT) is $`\sigma_+^L=\sigma_-^R>0`$ and $`\sigma_+^R=\sigma_-^L=0`$; the active polarizations reverse for $\Delta P_{\rm cr}>0$.
+\frac{\rho}{\rho_{\rm cr}}`$. For $`\Delta P_{\rm cr}<0`$, a branch selection motivated by quasi-linear theory (QLT) is $`\sigma_+^L=\sigma_-^R>0`$ and $`\sigma_+^R=\sigma_-^L=0`$; the active polarizations reverse for $`\Delta P_{\rm cr}>0`$.
 
 We consider a regime in which this regulation reaches a locally saturated state on timescales shorter than those resolved by the simulation. Accordingly, $`\Delta P_{\rm cr}`$ (kept on the level of $`v_A P_{\rm cr}/c`$) is prescribed through a local subgrid closure rather than evolved as an independent fluid variable. 
 
@@ -268,9 +262,9 @@ Since both $`\Delta P_{\rm cr}$ and $\sigma_{\pm}^{L,R}`$ represent unresolved m
 
 The module provides three feedback modes, corresponding to different levels of coupling between CRs and the MHD gas:
 
-1. No feedback: With `CRFeedback_Flag = false`, the gas receives neither energy nor momentum from the CRs. The CR energy source is also explicitly set to zero, so $\mathcal{E}_{\rm cr}$ evolves only through the advection term $\nabla\cdot\boldsymbol{F}_{\rm cr}$. This mode is primarily intended for tests, as it simplifies the analysis of the CR subsystem.
+1. No feedback: With `CRFeedback_Flag = false`, the gas receives neither energy nor momentum from the CRs. The CR energy source is also explicitly set to zero, so $`\mathcal{E}_{\rm cr}`$ evolves only through the advection term $`\nabla\cdot\boldsymbol{F}_{\rm cr}`$. This mode is primarily intended for tests, as it simplifies the analysis of the CR subsystem.
 
-2. Momentum feedback: With `CRFeedback_Flag = true` and `CR_EnergyFeedback_Flag = false`, CR momentum transfer updates the gas momentum and the corresponding kinetic energy. The $\mathcal{E}_{\rm cr}$ source remains active, but the associated energy exchange is not applied to the gas. This mode approximates situations in which CR heating is balanced by some cooling process or CR energy is inefficiently deposited as gas heat.
+2. Momentum feedback: With `CRFeedback_Flag = true` and `CR_EnergyFeedback_Flag = false`, CR momentum transfer updates the gas momentum and the corresponding kinetic energy. The $`\mathcal{E}_{\rm cr}`$ source remains active, but the associated energy exchange is not applied to the gas. This mode approximates situations in which CR heating is balanced by some cooling process or CR energy is inefficiently deposited as gas heat.
 
 3. Full feedback: With both flags set to `true`, CRs exchange both energy and momentum with the gas. The corresponding CR source terms enter the gas energy and momentum equations with opposite signs.
 
