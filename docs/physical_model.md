@@ -9,7 +9,7 @@ This page describes the model's physical scope, equations, and closure assumptio
 
 ## 1. Scope
 
-This module describes CRs as one or more fluid species coupled to an MHD gas. It evolves two fluid moments of the CR distribution: the energy density $`\mathcal{E}_{\rm cr}`$ and energy flux $`\boldsymbol{F}_{\rm cr}`$. The central modeling task is to represent microscopic CR transport and CR–gas coupling at the fluid scale. We consider gyroresonant scattering by Alfvén waves propagating parallel or antiparallel to the magnetic field. Four effective scattering coefficients, $`\sigma_{+}^L,\ \sigma_{+}^R,\ \sigma_{-}^L$, and $\sigma_{-}^R`$, distinguish the waves' propagation directions and circular polarizations.
+This module describes CRs as one or more fluid species coupled to an MHD gas. It evolves two fluid moments of the CR distribution: the energy density $`\mathcal{E}_{\rm cr}`$ and energy flux $`\boldsymbol{F}_{\rm cr}`$. The central modeling task is to represent microscopic CR transport and CR–gas coupling at the fluid scale. We consider gyroresonant scattering by Alfvén waves propagating parallel or antiparallel to the magnetic field. Four effective scattering coefficients, $`\sigma_{+}^L,\ \sigma_{+}^R,\ \sigma_{-}^L`$, and $`\sigma_{-}^R`$, distinguish the waves' propagation directions and circular polarizations.
 
 The model is intended for macroscopic simulations in which kinetic-scale wave growth and damping reach local equilibrium on the simulation timescale. A local subgrid closure represents the unresolved saturated wave state.
 
@@ -141,7 +141,7 @@ Setting $`\Delta P_{\rm cr}=0`$ recovers the isotropic closure $`\mathbf{P}_{\rm
 |---|---|---|
 | $\mathcal{E}_{\rm cr}$ | CR energy density | `cr_cons(cr_energy_id,...)`, `cr_prim(cr_energy_id,...)` |
 | $\boldsymbol{F}_{\rm cr}$ | Lab-frame CR energy flux | Components `cr_flux1_id`, `cr_flux2_id`, and `cr_flux3_id` of `cr_cons` and `cr_prim`; stored as $\boldsymbol{F}_{\rm cr}/V_m$ so that all four state components have the same dimensions |
-| $\mathbf{P}_{\rm cr}$ | CR pressure tensor | No direct code representation, calculated through $\mathcal{E}_{\rm cr}$ and $\Delta P_{\rm cr}$, see the closure above|
+| $\mathbf{P}_{\rm cr}$ | CR pressure tensor | No direct code representation, calculated through $`\mathcal{E}_{\rm cr}$ and $\Delta P_{\rm cr}`$, see the closure above|
 | $V_m$ | Reduced numerical speed of light| Given by `Vmax` under `<cosmic_ray>` in the input file; default $100.0$|
 | $\gamma_{\rm cr}$ | CR adiabatic index | Given by `gamma_cr` under `<cosmic_ray>` in the input file; default $4/3$ |
 | $\boldsymbol{u}$ | Gas velocity | Hydro primitive components `w(IVX,...)`, `w(IVY,...)`, and `w(IVZ,...)` |
@@ -217,7 +217,7 @@ Equal coefficients in all four Alfvén-wave branches represent direction- and po
 
 ### 6.2 CR streaming-instability coefficients
 
-The built-in streaming model selects the active wave direction from the sign of $\boldsymbol{b}\cdot\boldsymbol{\nabla}\mathcal{E}_{\rm cr}$ and divides the scattering coefficient equally between the two polarizations in that direction:
+The built-in streaming model selects the active wave direction from the sign of $`\boldsymbol{b}\cdot\boldsymbol{\nabla}\mathcal{E}_{\rm cr}`$ and divides the scattering coefficient equally between the two polarizations in that direction:
 
 ```math
 \sigma_{\pm}
@@ -256,11 +256,11 @@ The CR pressure-anisotropy instability (CRPAI) can be excited when
 \sim \pm\frac{v_A}{c}
 \frac{\nu_{\rm damp}}{\Omega_{\rm cr}}
 \frac{\rho}{\rho_{\rm cr}}.
-\]For $\Delta P_{\rm cr}<0$, a branch selection motivated by quasi-linear theory (QLT) is $\sigma_+^L=\sigma_-^R>0$ and $\sigma_+^R=\sigma_-^L=0$; the active polarizations reverse for $\Delta P_{\rm cr}>0$.
+\]For $`\Delta P_{\rm cr}<0`$, a branch selection motivated by quasi-linear theory (QLT) is $`\sigma_+^L=\sigma_-^R>0`$ and $`\sigma_+^R=\sigma_-^L=0`$; the active polarizations reverse for $\Delta P_{\rm cr}>0$.
 
-We consider a regime in which this regulation reaches a locally saturated state on timescales shorter than those resolved by the simulation. Accordingly, $\Delta P_{\rm cr}$ (kept on the level of $v_A P_{\rm cr}/c$) is prescribed through a local subgrid closure rather than evolved as an independent fluid variable. 
+We consider a regime in which this regulation reaches a locally saturated state on timescales shorter than those resolved by the simulation. Accordingly, $`\Delta P_{\rm cr}`$ (kept on the level of $`v_A P_{\rm cr}/c`$) is prescribed through a local subgrid closure rather than evolved as an independent fluid variable. 
 
-Since both $\Delta P_{\rm cr}$ and $\sigma_{\pm}^{L,R}$ represent unresolved microphysics and depend on prescriptions, the code assigns them together when setting the scattering properties. This treatment is consistent with our aim of incorporating CRPAI as an additional coupling mechanism at the fluid scale.
+Since both $`\Delta P_{\rm cr}$ and $\sigma_{\pm}^{L,R}`$ represent unresolved microphysics and depend on prescriptions, the code assigns them together when setting the scattering properties. This treatment is consistent with our aim of incorporating CRPAI as an additional coupling mechanism at the fluid scale.
 
 
 
