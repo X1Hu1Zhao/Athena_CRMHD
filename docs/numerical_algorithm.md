@@ -221,9 +221,9 @@ HLLENoCsRiemannSolverCosmicRay(
     pmb->phydro->wl_, pmb->phydro->wr_, x1flux);
 ```
 
-The $x_2$ and $x_3$ sweeps are performed only when those mesh directions are active.
+The $`x_2`$ and $`x_3`$ sweeps are performed only when those mesh directions are active.
 
-The reconstructed $\Delta P_{\rm cr}$ enters the full interface pressure tensor, but the default built-in prescriptions set $\Delta P_{\rm cr}=0$, so the standard configuration reduces exactly to the isotropic interface pressure $\mathcal{E}_{\rm cr}\mathbf{I}/3$. Users may manually turn it on by setting their own $\Delta P_{\rm cr}$ prescriptions in `UserDefinedCRScattering`, and `pressure_anisotropy_flag = true` in the input file.
+The reconstructed $`\Delta P_{\rm cr}`$ enters the full interface pressure tensor, but the default built-in prescriptions set $`\Delta P_{\rm cr}=0`$, so the standard configuration reduces exactly to the isotropic interface pressure $`\mathcal{E}_{\rm cr}\mathbf{I}/3`$. Users may manually turn it on by setting their own $`\Delta P_{\rm cr}`$ prescriptions in `UserDefinedCRScattering`, and `pressure_anisotropy_flag = true` in the input file.
 
 
 ### 5.2 Compute interface CR fluxes
@@ -325,7 +325,7 @@ Athena++ updates the cell average using geometry-aware face areas and cell volum
 -A_{d,-}\boldsymbol{F}_{d,-}\right),
 ```
 
-where $w$ includes the stage's timestep weight. The implementation adds transverse contributions only in active mesh directions:
+where $`w`$ includes the stage's timestep weight. The implementation adds transverse contributions only in active mesh directions:
 
 ```cpp
 dflx(n,i) = x1area(i+1)*x1flux(n,k,j,i+1)
@@ -370,7 +370,7 @@ Setting `pressure_anisotropy_flag = false` is a module-level veto: `SetPropertie
 **Entry point:** `CRScattering::ScatteringIntegrator`  
 **Source:** `src/cosmic_ray/cr_scattering/`
 
-The scattering task updates the stiff source terms that depend on $\mathcal{E}_{\rm cr}$ and $\boldsymbol{F}_{\rm cr}$. It runs after the explicit source-term updates. We recommend the following second-order combination:
+The scattering task updates the stiff source terms that depend on $`\mathcal{E}_{\rm cr}`$ and $`\boldsymbol{F}_{\rm cr}`$. It runs after the explicit source-term updates. We recommend the following second-order combination:
 
 ```ini
 <time>
@@ -407,9 +407,9 @@ The meaning of the symbols is listed below:
 | $\Delta t$ | Timestep for one full step, comprising two stages in VL2 |
 |$\mathbf{\Lambda}$ | $\mathbf{I}-\left(\mathbf{I} - \frac{\Delta t}{2}\mathbf{S}^{(n+1/2)}\right)\Delta t \mathbf{S}^{(n+1/2)}$ |
 | $\Delta \boldsymbol{q}_{\rm af,src}^{(n)}$ | State increment from the flux-divergence and explicit-source updates, measured relative to the state at the beginning of the full integration stage |
-| $\mathbf{S}^{(n)}$ | The matrix $\mathbf{S}$ is obtained by reorganizing the implicit source term into the form $\mathbf{S}\boldsymbol{q}$, and the superscript $(n)$ denotes the $n$-th step. The exact form is: $\mathbf{S}=\begin{pmatrix}\frac{4}{3}\sum\limits_{i=\pm}\sigma_i w_i^2 & -\sum\limits_{i=\pm}\sigma_i w_i & -A\sigma_{\Omega}u_z' & -A\sigma_{\Omega}u_y'\\ \frac{4}{3}\sum\limits_{i=\pm}\sigma_i w_i & -V_m\sum\limits_{i=\pm}\sigma_i & 0 & 0\\ -4A\sigma_{\Omega}V_m u_z'/3 & 0 & 0 & A\sigma_{\Omega}V_m\\ 4A\sigma_{\Omega}V_m u_y'/3 & 0 & -A\sigma_{\Omega}V_m & 0\end{pmatrix}$ |
+| $\mathbf{S}^{(n)}$ | The matrix $`\mathbf{S}`$ is obtained by reorganizing the implicit source term into the form $\mathbf{S}\boldsymbol{q}$, and the superscript $(n)$ denotes the $n$-th step. The exact form is: $`\mathbf{S}=\begin{pmatrix}\frac{4}{3}\sum\limits_{i=\pm}\sigma_i w_i^2 & -\sum\limits_{i=\pm}\sigma_i w_i & -A\sigma_{\Omega}u_z' & -A\sigma_{\Omega}u_y'\\ \frac{4}{3}\sum\limits_{i=\pm}\sigma_i w_i & -V_m\sum\limits_{i=\pm}\sigma_i & 0 & 0\\ -4A\sigma_{\Omega}V_m u_z'/3 & 0 & 0 & A\sigma_{\Omega}V_m\\ 4A\sigma_{\Omega}V_m u_y'/3 & 0 & -A\sigma_{\Omega}V_m & 0\end{pmatrix}`$ |
 
-Matrix products retain the order shown. The displayed form of $\mathbf{S}$ applies in the field-aligned frame, where $\boldsymbol{b}\parallel\hat{x}$. Primes denote gas-velocity components in this frame, and $w_\pm\equiv\boldsymbol{u}\cdot\boldsymbol{b}\pm v_A$ are the wave velocities along the field.
+Matrix products retain the order shown. The displayed form of $\mathbf{S}$ applies in the field-aligned frame, where $`\boldsymbol{b}\parallel\hat{x}`$. Primes denote gas-velocity components in this frame, and $`w_\pm\equiv\boldsymbol{u}\cdot\boldsymbol{b}\pm v_A`$ are the wave velocities along the field.
 
 
 ### 8.2 Field-aligned frame
@@ -522,7 +522,7 @@ prim_cr_flux3  = cons_cr_flux3;
 
 ### 10.1 Hyperbolic transport limit
 
-The CR advection limit is the smallest active-direction cell width divided by $V_m$:
+The CR advection limit is the smallest active-direction cell width divided by $`V_m`$:
 
 ```math
 \Delta t_{\rm adv,CR}=\frac{\min(\Delta x, \Delta y,\Delta z)}{V_m}
