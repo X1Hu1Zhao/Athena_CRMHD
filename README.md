@@ -1,4 +1,8 @@
 # Two-Moment Cosmic-Ray Fluid Module for Athena++
+[![Release](https://img.shields.io/github/v/release/X1Hu1Zhao/Athena_CRMHD)](https://github.com/X1Hu1Zhao/Athena_CRMHD/releases/latest)
+[![License](https://img.shields.io/github/license/X1Hu1Zhao/Athena_CRMHD)](LICENSE)
+[![Method Paper DOI](https://img.shields.io/badge/Method_Paper-10.3847%2F1538--4365%2Fae3e7f-blue.svg)](https://doi.org/10.3847/1538-4365/ae3e7f)
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 ![Athena++](docs/assets/athena-logo.png)
 
