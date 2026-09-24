@@ -199,6 +199,8 @@ The method paper discusses four wave branches in different regimes. The table li
 | Damping CR-modified acoustic | 10<sup>−3</sup> | 0.01 | 0.1 | 100 | 1.198 | 0.1 | 9.596 | −2.718 | CR-modified MHD acoustic mode |
 | Growing CR-modified acoustic | 10<sup>−3</sup> | 0.1 | 0.01 | 1000 | 1.079 | 0.1 | 0.322 | 0.142 | CR-modified MHD acoustic mode |
 | Rapid damping | 10<sup>−8</sup> | 0.1 | 0.01 | 1000 | 0.628 | 0.1 | −1.007 | −99693.278 | Strongly damped branch |
+
+
 Each row provides the case-specific parameters needed to initialize the corresponding wave. Use these values with the common numerical settings in `athinput.CRMHDwave`. In the input file, set `Vmax` to $`V_m`$, choose the domain length $`x_{1,\max}-x_{1,\min}=L_{\rm box}`$, and split the listed forward-wave scattering coefficient as `sigma_pL_1` $=$ `sigma_pR_1` $=$ $\sigma/2$, with `sigma_mL_1` $=$ `sigma_mR_1` $= 0$.
 
 ### 4.3 Run
