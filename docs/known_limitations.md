@@ -68,9 +68,9 @@ The numerical speed of light $V_m$ is constant throughout a run. Reduced-speed-o
 
 ## 6. `gamma_cr` Should Remain `4/3`
 
-In the ultrarelativistic limit, the CR adiabatic index is $4/3$, giving $P_{\rm cr}=(\gamma_{\rm cr}-1)\mathcal{E}_{\rm cr}=\mathcal{E}_{\rm cr}/3$. Parts of the module use this relation explicitly. Changing the input parameter alone therefore does not produce a consistent model with a different adiabatic index.
+In the ultrarelativistic limit, the CR adiabatic index is $`4/3`$, giving $`P_{\rm cr}=(\gamma_{\rm cr}-1)\mathcal{E}_{\rm cr}=\mathcal{E}_{\rm cr}/3`$. Parts of the module use this relation explicitly. Changing the input parameter alone therefore does not produce a consistent model with a different adiabatic index.
 
-Keep $\gamma_{\rm cr}=4/3$ unless every use of the closure has been audited and the alternative model has been validated. In an input file, write `gamma_cr = 1.3333333333333333`; Athena++ expects a numeric value, not the expression `4/3`.
+Keep $`\gamma_{\rm cr}=4/3`$ unless every use of the closure has been audited and the alternative model has been validated. In an input file, write `gamma_cr = 1.3333333333333333`; Athena++ expects a numeric value, not the expression `4/3`.
 
 
 ## 7. Timestep Restrictions
@@ -85,7 +85,7 @@ Before the global CFL factor, the current built-in streaming model applies
 
 This guards the sign-changing streaming closure near CR-pressure extrema. It is not a universal timestep for arbitrary callbacks. A user-defined coefficient model, explicit pressure-anisotropy source, or new damping law may require a stronger bound.
 
-For multiple species, the implementation uses the largest $\widetilde{\sigma}_{0,\rm st}$.
+For multiple species, the implementation uses the largest $`\widetilde{\sigma}_{0,\rm st}`$.
 
 
 
@@ -93,11 +93,11 @@ For multiple species, the implementation uses the largest $\widetilde{\sigma}_{0
 
 The examples accompanying the method paper use dimensionless code units and are designed to isolate numerical and physical effects. They are not turnkey galaxy, wind, shock, or multiphase-ISM applications.
 
-For a physical application, define consistent units for $\mathcal{E}_{\rm cr}$, $\boldsymbol{F}_{\rm cr}$, $V_m$, and all coupling coefficients.
+For a physical application, define consistent units for $`\mathcal{E}_{\rm cr}`$, $`\boldsymbol{F}_{\rm cr}`$, $`V_m`$, and all coupling coefficients.
 
 
 
 ## 9. Unresolved deviations in the CR flux perturbation.
-In the CRMHD growing-wave test, the $\mathcal{E}_{\rm cr}$ perturbation agrees well with the linear eigenmode prediction. The CR flux perturbation, however, develops a localized spike, a small drift in its spatial mean. Although the extracted fundamental Fourier component remains close to the predicted mode, the full \(F_{\rm cr}\) profile is not currently considered quantitatively validated. The origin of these deviations——finite-amplitude effects, the Riemann solver, implicit source integration, or operator splitting——has not yet been isolated. We will investigate this issue in future work.
+In the CRMHD growing-wave test, the $`\mathcal{E}_{\rm cr}`$ perturbation agrees well with the linear eigenmode prediction. The CR flux perturbation, however, develops a localized spike, a small drift in its spatial mean. Although the extracted fundamental Fourier component remains close to the predicted mode, the full $`F_{\rm cr}`$ profile is not currently considered quantitatively validated. The origin of these deviations——finite-amplitude effects, the Riemann solver, implicit source integration, or operator splitting——has not yet been isolated. We will investigate this issue in future work.
 
 We suggest that, users requiring accurate CR flux perturbations should perform amplitude, resolution, and timestep convergence tests.
