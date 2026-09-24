@@ -1,6 +1,8 @@
 # Two-Moment Cosmic-Ray Fluid Module for Athena++
 
-This project extends Athena++ with a multi-species, two-moment cosmic-ray (CR) fluid module. For each CR species, it evolves the lab-frame CR energy density $\mathcal{E}_{\rm cr}$ and the three components of the CR energy flux $\boldsymbol{F}_{\rm cr}$, coupling CR transport and feedback to the MHD gas through Alfvén-wave scattering.
+![Athena++](docs/assets/athena-logo.png)
+
+This project extends Athena++ with a multi-species, two-moment cosmic-ray (CR) fluid module. For each CR species, it evolves the lab-frame CR energy density $`\mathcal{E}_{\mathrm{cr}}`$ and the three components of the CR energy flux $`\boldsymbol{F}_{\mathrm{cr}}`$, coupling CR transport and feedback to the MHD gas through Alfvén-wave scattering.
 
 The module is designed for macroscopic simulations of CR feedback on galactic gas, including the interstellar and circumgalactic medium (ISM and CGM). Effective coupling terms represent the cumulative effects of microscopic interactions. The model assumes that resonant scattering dominates CR–plasma coupling and that unresolved wave growth and damping reach local equilibrium on the simulation scale.
 
